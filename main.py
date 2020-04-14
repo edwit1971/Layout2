@@ -2,6 +2,7 @@
 # GridLayout tutorial
 
 from kivy.app import App
+from Misc import BackgroundLabel, ScrollableLabel
 from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.relativelayout import RelativeLayout
@@ -14,6 +15,9 @@ from kivy.graphics import Rectangle, Color, Line, InstructionGroup
 
 Window.size = (500, 500)
 
+
+##############################################################
+##############################################################
 class LayoutsApp(App):
     
     def __init__(self, **kwargs):
@@ -22,8 +26,12 @@ class LayoutsApp(App):
         self.fY = 0
         self.rX = 0
         self.rY = 0
+        self.Scroll1 = ScrollableLabel()
+        self.L2 = BackgroundLabel()
         self.IG_Float    = InstructionGroup()
         self.IG_Relative = InstructionGroup()
+        self.IG_Layout1  = InstructionGroup()
+        self.Layout1 = RelativeLayout()
         self.flout = FloatLayout()
         self.rlout = RelativeLayout()
         self.Main_Layout = GridLayout(rows = 2)
@@ -144,6 +152,28 @@ class LayoutsApp(App):
         self.fbtn1.background_color = (1, 1, 0, 1)
         self.flout.add_widget(self.fbtn1)
         self.fbtn1.bind(on_touch_move = self.Move_F1)
+        ######################
+        String1  = ' A1 B1 C1 D1 E1 F1 G1 H1 I1 J1 K1 L1 M1 N1 O1 P1 Q1 R1 S1 T1 U1 V1 W1 X1 Y1 Z1'
+        String1 += ' A2 B2 C2 D2 E2 F2 G2 H2 I2 J2 K2 L2 M2 N2 O2 P2 Q2 R2 S2 T2 U2 V2 W2 X2 Y2 Z2'
+        String1 += ' A3 B3 C3 D3 E3 F3 G3 H3 I3 J3 K3 L3 M3 N3 O3 P3 Q3 R3 S3 T3 U3 V3 W3 X3 Y3 Z3'
+        String1 += ' A4 B4 C4 D4 E4 F4 G4 H4 I4 J4 K4 L4 M4 N4 O4 P4 Q4 R4 S4 T4 U4 V4 W4 X4 Y4 Z4'
+        String1 += ' A5 B5 C5 D5 E5 F5 G5 H5 I5 J5 K5 L5 M5 N5 O5 P5 Q5 R5 S5 T5 U5 V5 W5 X5 Y5 Z5'
+        String1 += ' A6 B6 C6 D6 E6 F6 G6 H6 I6 J6 K6 L6 M6 N6 O6 P6 Q6 R6 S6 T6 U6 V6 W6 X6 Y6 Z6'
+        String1 += ' A7 B7 C7 D7 E7 F7 G7 H7 I7 J7 K7 L7 M7 N7 O7 P7 Q7 R7 S7 T7 U7 V7 W7 X7 Y7 Z7'
+        #######################
+        # Instantiate a ScrollableLabel Object
+        # set ParentLayout
+        # Define the Size and Poition of ScrollWindow
+        # Define the text and FontSize for ScrollLabel
+        # Call Set_ScrollWindow()
+        self.Scroll1.ParentLayout = self.flout
+        self.Scroll1.ScrollWindow.width  = 145
+        self.Scroll1.ScrollWindow.height = 125
+        self.Scroll1.ScrollWindow.x = Xo + 10
+        self.Scroll1.ScrollWindow.y = Y2 - self.Scroll1.ScrollWindow.height - 15
+        self.Scroll1.ScrollLabel.text = String1
+        self.Scroll1.ScrollLabel.font_size = 12
+        self.Scroll1.Set_ScrollWindow()
         #############################################
         #############################################
         # RELATIVE LAYOUT
